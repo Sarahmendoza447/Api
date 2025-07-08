@@ -28,7 +28,7 @@ p {
 table {
     font-size: 1rem;
     border-collapse: collapse;
-    margin-bottom: 18px;
+    margin-bottom: 18px auto;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 8px #d0d0d0;
@@ -74,7 +74,8 @@ input[type="button"] {
     cursor: pointer;
     box-shadow: 0 2px 4px #b0b8c1;
     transition: background 0.2s, box-shadow 0.2s;
-    margin-right: 6px;
+    margin: 4px 6px;
+    display: inline-block;
 }
 
 input[type="button"]:hover {
@@ -92,8 +93,9 @@ input[type="button"]:active {
     border-radius: 8px;
     box-shadow: 0 2px 8px #d0d0d0;
     padding: 12px;
-    margin-bottom: 18px;
+    margin-bottom: 18px auto;
     height: 500px;
+    display: block;
 }
 
 hr {
@@ -132,4 +134,41 @@ marquee {
     color: #ff0000;
     font-family: 'Segoe UI', Arial, sans-serif;
     font-weight: bold;
+}
+
+body > table {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+@media (max-width: 700px) {
+    #map {
+        width: 90% !important;
+        max-width: 500px;
+    }
+    
+    body > table {
+        width: 95%;
+    }
+    
+    input[type="button"] {
+        margin: 2px;
+        padding: 8px 12px;
+    }
 }
