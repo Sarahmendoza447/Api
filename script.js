@@ -21,8 +21,17 @@ function initializeMap() {
         
         var popup = L.popup()
             .setLatLng(e.latlng)
-            .setContent('<b>Location Details</b><br/>Latitude: ' + lat + '<br/>Longitude: ' + lng)
+            .setContent('<b>Location Details</b><br/>Loading address...<br/>Latitude: ' + lat + '<br/>Longitude: ' + lng)
             .openOn(map);
+        
+        // Fetch the address for this location
+        fetchAddress(lat, lng)
+            .then(function(address) {
+                popup.setContent('<b>Location Details</b><br/><b>Address:</b> ' + address + '<br/>Latitude: ' + lat + '<br/>Longitude: ' + lng);
+            })
+            .catch(function(error) {
+                popup.setContent('<b>Location Details</b><br/><b>Address:</b> Unable to fetch address<br/>Latitude: ' + lat + '<br/>Longitude: ' + lng);
+            });
     });
     
     alert('Map initialized successfully!');
@@ -159,4 +168,22 @@ function clearMarkers() {
         markers = [];
         alert('All markers cleared');
     }
+}
+
+
+function fetchAddress(lat, lng) {
+    return fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            return data.display_name || "Address not found";
+        })
+        .catch(function(error) {
+            console.error('Error fetching address:', error);
+            return "Unable to fetch address";
+        });
 }
