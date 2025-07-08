@@ -3,10 +3,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>OpenStreetMap API</title>
+    <!-- leaflet map styling -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- link to style.css -->
     <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
+    <!-- main container table -->
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <td>
@@ -16,10 +19,12 @@
                 </center>
             </td>
         </tr>
+        <!-- search and buttons -->
         <tr>
             <td>
                 <center>
                     <table border="1" cellpadding="5" cellspacing="0">
+                        <!-- Search input row -->
                         <tr>
                             <td>
                                 <b>Search Location:</b>
@@ -27,6 +32,7 @@
                                 <input type="button" value="Search" onclick="searchLocation()" />
                             </td>
                         </tr>
+                        <!-- Action buttons row -->
                         <tr>
                             <td>
                                 <input type="button" value="My Location" onclick="getCurrentLocation()" />
@@ -38,18 +44,20 @@
                 </center>
             </td>
         </tr>
+        <!-- map display -->
         <tr>
             <td>
                 <center>
-                    <div id="map" style="width: 600px; height: 400px; border: 2px solid #000000; margin: 10px;"></div>
+                    <!-- actual map container -->
+                    <div id="map" style="width: 600px; height: 400px; border: 2px solid #000000; margin: 10px auto;"></div>
                 </center>
             </td>
         </tr>
-        
-        </tr>
     </table>
     
+    <!-- leaflet JavaScript lib -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- custom js -->
     <script src="script.js"></script>
 </body>
 </html>

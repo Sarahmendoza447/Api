@@ -1,0 +1,7 @@
+My OpenStreetMap Explorer Project is a simple demonstration of how the OpenStreetMap APi can be used to create an interactive website. 
+
+The website contains a search button where the user may search for a place. The map will then pin the location being searched. 
+
+They users may also opt to use the "My Location" button to get their real-time location and pin it on the map.
+
+Aside from this, the users may use the cursor to point on a  specific location and use the button "Add Marker" to add marker on  it, and the "Clear Markers" button to remove all markers on the map. 

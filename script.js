@@ -6,7 +6,8 @@ var currentLocationMarker = null;
 window.onload = function() {
     initializeMap();
 };
-
+//This function initializes the map and sets up event listeners for user interactions
+// It also fetches the user's current location and allows searching for locations by name
 function initializeMap() {
     map = L.map('map').setView([14.09, 120.68], 13);
     
@@ -21,13 +22,23 @@ function initializeMap() {
         
         var popup = L.popup()
             .setLatLng(e.latlng)
-            .setContent('<b>Location Details</b><br/>Latitude: ' + lat + '<br/>Longitude: ' + lng)
+            .setContent('<b>Location Details</b><br/>Loading address...<br/>Latitude: ' + lat + '<br/>Longitude: ' + lng)
             .openOn(map);
+        
+        // Fetch the address for this location
+        fetchAddress(lat, lng)
+            .then(function(address) {
+                popup.setContent('<b>Location Details</b><br/><b>Address:</b> ' + address + '<br/>Latitude: ' + lat + '<br/>Longitude: ' + lng);
+            })
+            .catch(function(error) {
+                popup.setContent('<b>Location Details</b><br/><b>Address:</b> Unable to fetch address<br/>Latitude: ' + lat + '<br/>Longitude: ' + lng);
+            });
     });
     
     alert('Map initialized successfully!');
 }
-
+//this function searches for a location by name using the OpenStreetMap Nominatim API
+// It updates the map view and adds a marker for the found location
 function searchLocation() {
     var searchTerm = document.getElementById('searchInput').value;
     if (!searchTerm) {
@@ -69,7 +80,8 @@ function searchLocation() {
     
     xhr.send();
 }
-
+//this function retrieves the user's current location using the Geolocation API
+// It updates the map view and adds a marker for the current location
 function getCurrentLocation() {
     if (!navigator.geolocation) {
         alert('Geolocation is not supported by this browser.');
@@ -121,7 +133,8 @@ function getCurrentLocation() {
         }
     );
 }
-
+// This function adds a custom marker at the center of the map
+// It also allows the user to click on the marker to remove it
 function addMarker() {
     var center = map.getCenter();
     var lat = center.lat.toFixed(6);
@@ -145,7 +158,7 @@ function addMarker() {
     markers.push(marker);
     alert('Marker added at: ' + lat + ', ' + lng);
 }
-
+//this function remove markers in the map
 function clearMarkers() {
     if (markers.length === 0) {
         alert('No markers to clear!');
@@ -159,4 +172,22 @@ function clearMarkers() {
         markers = [];
         alert('All markers cleared');
     }
+}
+
+//this function fetches the address for a given latitude and longitude using the OpenStreetMap Nominatim API
+function fetchAddress(lat, lng) {
+    return fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(function(data) {
+            return data.display_name || "Address not found";
+        })
+        .catch(function(error) {
+            console.error('Error fetching address:', error);
+            return "Unable to fetch address";
+        });
 }
