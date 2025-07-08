@@ -5,3 +5,13 @@ The website contains a search button where the user may search for a place. The 
 They users may also opt to use the "My Location" button to get their real-time location and pin it on the map.
 
 Aside from this, the users may use the cursor to point on a  specific location and use the button "Add Marker" to add marker on  it, and the "Clear Markers" button to remove all markers on the map. 
+
+How to use OpenStreetMap Explorer?
+1. Input the desired location in the search box located below the header. It is beside the 'Search input' label.
+2. Click the search button to control the location showed in the map. (Note: The user can navigate in the map to successfully place the marker on the desired location)
+3. There are 3 buttons labeled as 'My Location', 'Add Marker', and 'Clear Markers'. It functions as the following:
+    My Location Button: allows the user to get the current location and display it in the OpenStreetMap for more precise and accurate location.
+    Add Marker Button: allows the user to mark the desired location in the map.
+    Clear Markers Button: allows the user to remove the markers added in the map.
+4. The '+' and '-' button at the top-left corner of the map allows the users to zoom in or out.
+5. The users can now explore the changes made in the OpenStreetMap Explore.
