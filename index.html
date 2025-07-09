@@ -1,63 +1,97 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>OpenStreetMap API</title>
-    <!-- leaflet map styling -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap Explorer</title>
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- link to style.css -->
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- main container table -->
-    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-            <td>
-                <center>
-                    <h1>My OpenStreetMap Explorer</h1>
-                    <hr width="80%" />
-                </center>
-            </td>
-        </tr>
-        <!-- search and buttons -->
-        <tr>
-            <td>
-                <center>
-                    <table border="1" cellpadding="5" cellspacing="0">
-                        <!-- Search input row -->
-                        <tr>
-                            <td>
-                                <b>Search Location:</b>
-                                <input type="text" id="searchInput" size="65" value="Nasugbu, Batangas" />
-                                <input type="button" value="Search" onclick="searchLocation()" />
-                            </td>
-                        </tr>
-                        <!-- Action buttons row -->
-                        <tr>
-                            <td>
-                                <input type="button" value="My Location" onclick="getCurrentLocation()" />
-                                <input type="button" value="Add Marker" onclick="addMarker()" />
-                                <input type="button" value="Clear Markers" onclick="clearMarkers()" />
-                            </td>
-                        </tr>
-                    </table>
-                </center>
-            </td>
-        </tr>
-        <!-- map display -->
-        <tr>
-            <td>
-                <center>
-                    <!-- actual map container -->
-                    <div id="map" style="width: 600px; height: 400px; border: 2px solid #000000; margin: 10px auto;"></div>
-                </center>
-            </td>
-        </tr>
-    </table>
-    
-    <!-- leaflet JavaScript lib -->
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h1>OpenStreetMap Explorer</h1>
+                </div>
+                <p class="subtitle">Discover and explore locations around the world</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-input-group">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Enter location to search..." 
+                            value="Nasugbu, Batangas"
+                        />
+                        <button type="button" class="search-btn" onclick="searchLocation()">
+                            <i class="fas fa-search"></i>
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="controls-container">
+                    <button class="control-btn primary" onclick="getCurrentLocation()">
+                        <i class="fas fa-location-arrow"></i>
+                        <span>My Location</span>
+                    </button>
+                    <button class="control-btn secondary" onclick="addMarker()">
+                        <i class="fas fa-map-pin"></i>
+                        <span>Add Marker</span>
+                    </button>
+                    <button class="control-btn danger" onclick="clearMarkers()">
+                        <i class="fas fa-trash"></i>
+                        <span>Clear Markers</span>
+                    </button>
+                    <button class="control-btn warning" onclick="clearRoute()">
+                        <i class="fas fa-route"></i>
+                        <span>Clear Route</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Map Section -->
+            <section class="map-section">
+                <div class="map-container">
+                    <div id="map"></div>
+                    <div class="map-overlay">
+                        <div class="map-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Click on the map to get location details and routes</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 OpenStreetMap Explorer. Powered by OpenStreetMap & Leaflet.</p>
+        </footer>
+    </div>
+
+    <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <!-- custom js -->
+    <!-- Custom JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
