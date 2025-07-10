@@ -1,213 +1,171 @@
-
-/*This is the main CSS file for the API interface. It styles the HTML elements to create a clean and modern look.
-It includes styles for the body, headings, paragraphs, tables, inputs, buttons, and other elements used in the interface.
-The styles are designed to be responsive and visually appealing, with a focus on usability and readability.*/
-
-/*BODY
-This is the style for the body of the interface, which includes font family, background color, and text alignment.*/
+/* Body and Typography */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-size: 15px;
-    background: linear-gradient(135deg, #f0f4f8 0%, #dce5f1 100%);
-    margin: 0;
-    padding: 32px 16px;
-    color: #222;
-    text-align: center;
-    line-height: 1.6;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+  margin: 0;
+  padding: 40px 20px;
+  color: #222;
+  text-align: center;
+  line-height: 1.6;
 }
 
-/*HEADINGS
-This is the style for headings in the interface, which includes font size, color, and text decoration.*/
 h1 {
-    color: #002244;
-    font-size: 2.2rem;
-    text-decoration: underline;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-    margin-bottom: 24px;
-    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.1);
-}
-/*PARAGRAPHS
-This is the style for paragraphs in the interface, which includes font size, color, and margin.*/
-p {
-    color: #333;
-    font-size: 1.05rem;
-    margin-bottom: 16px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/*TABLES
-This is the style for the tables used in the interface, including borders, padding, and background color.*/
-table {
-    font-size: 1rem;
-    border-collapse: collapse;
-    margin-bottom: 18px auto;
-
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 90%;
-    max-width: 1000px;
-    text-align: center;
-}
-
-/*TABLE HEADERS AND CELLS
-This is the style for the table headers and cells, which includes padding, border, and background color.*/
-table th, table td {
-    padding: 12px 18px;
-    border-bottom: 1px solid #e6eaf0;
-}
-
-/*TABLE HEADERS
-This is the style for the table headers, which includes background color, text color, and font weight.*/
-table th {
-    background: #e8f0fa;
-    color: #003366;
-    font-weight: bold;
-}
-
-/*TABLE CELLS
-This is where the user input their location*/
-input[type="text"] {
-    font-size: 1rem;
-    padding: 8px 12px;
-    border: 1.5px solid #a0aab8;
-    border-radius: 6px;
-    background-color: #f7f9fc;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    margin-bottom: 10px;
-    width: 240px;
-    max-width: 100%;
-}
-/*INPUT FOCUS STATE
-This is the focus state for the input field, which highlights it when clicked.*/
-input[type="text"]:focus {
-    border-color: #004080;
-    box-shadow: 0 0 6px rgba(0, 64, 128, 0.2);
-    outline: none;
-}
-
-/*BUTTONS
-This is the style for the buttons used in the interface, including hover and active states.*/
-input[type="button"] {
-    font-size: 1rem;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: #003366;
-    color: #fff;
-    cursor: pointer;
-
-    box-shadow: 0 2px 4px #b0b8c1;
-    transition: background 0.2s, box-shadow 0.2s;
-    margin: 4px 6px;
-    display: inline-block;
-  
-}
-
-/*BUTTON HOVER STATE
-This is the hover state for the button, which changes the background color and adds a shadow effect.*/
-input[type="button"]:hover {
-    background-color: #00509e;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-/*BUTTON ACTIVE STATE
-This is the active state for the button, which provides feedback when clicked.*/
-input[type="button"]:active {
-    background-color: #001f4d;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/*LINKS
-This is the style for links in the interface, including hover and visited states.*/
-#map {
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px #d0d0d0;
-    padding: 12px;
-    margin-bottom: 18px auto;
-    height: 500px;
-    display: block;
+  color: #003366;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 hr {
-    border: none;
-    border-top: 2px solid #b0b8c1;
-    margin: 32px 0;
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 30px auto;
+  width: 60%;
 }
 
-center {
-    text-align: center;
+/* Layout Container */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-b {
-    font-weight: bold;
+/* Controls box (left side) */
+.controls {
+  flex: 1 1 320px;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  text-align: left;
+  box-sizing: border-box;
 }
 
-i {
-    font-style: italic;
+/* Map section (right side) */
+.map-section {
+  flex: 2 1 500px;
+  max-width: 800px;
+  box-sizing: border-box;
 }
 
-/*BLINKING TEXT ANIMATION
-This is a simple CSS animation that makes text blink, used for important notifications.*/
-@keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
+#map {
+  width: 100%;
+  height: 500px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.blink {
-    animation: blink 1s infinite;
-    color: #d10000;
-    font-weight: bold;
+/* Search Container */
+.search-box {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
 }
 
-/*MARQUEE TEXT
-This is a marquee effect for scrolling text, used to draw attention to important messages.*/
-marquee {
-    font-size: 1.1rem;
-    color: #d10000;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    font-weight: bold;
+.search-box label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #003366;
 }
 
-body > table {
-    margin: 0 auto;
-    max-width: 800px;
+/* Arrange input and button side by side */
+.search-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
-.controls-container {
-    display: flex;
-    justify-content: center;
+.search-row input[type="text"] {
+  max-width: 300px;
+  min-width: 150px;
+  width: 100%;
+  flex: 1;
+  margin: 0;
+}
+
+/* Buttons */
+.search-row input[type="button"],
+input[type="button"] {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #005a9e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+input[type="button"]:hover {
+  background-color: #007acc;
+  transform: translateY(-2px);
+}
+
+input[type="button"]:active {
+  background-color: #004b87;
+  transform: scale(0.98);
+}
+
+/* Input Fields */
+input[type="text"] {
+  font-size: 1rem;
+  padding: 10px 14px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  transition: 0.3s;
+  margin: 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: #007acc;
+  box-shadow: 0 0 6px rgba(0, 122, 204, 0.3);
+  outline: none;
+}
+
+/* Button group under search */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 12px 0;
-}
+  }
 
-.map-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
+  .controls,
+  .map-section {
+    width: 100%;
+  }
 
-@media (max-width: 700px) {
-    #map {
-        width: 90% !important;
-        max-width: 500px;
-    }
-    
-    body > table {
-        width: 95%;
-    }
-    
-    input[type="button"] {
-        margin: 2px;
-        padding: 8px 12px;
-    }
-}
+  .button-group input[type="button"] {
+    width: 100%;
+  }
 
+  .search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-row input[type="button"] {
+    width: 100%;
+  }
+}
